@@ -59,7 +59,7 @@
       font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", "Helvetica Neue", Arial, sans-serif;
       font-size: 16px;
       color: #333;
-      background: #f5f5f5;
+      background: #f3f8f4;
       line-height: 1.8;
     }
     a { color: inherit; text-decoration: none; }
@@ -76,7 +76,7 @@
       font-size: 13px;
     }
     .quick-news-label {
-      background: #e30000;
+      background: #06c755;
       color: #fff;
       font-size: 12px;
       font-weight: 700;
@@ -139,7 +139,7 @@
       flex-shrink: 0;
     }
     .site-logo .logo-badge {
-      background: #e30000;
+      background: #06c755;
       color: #fff;
       font-size: 11px;
       font-weight: 700;
@@ -166,7 +166,7 @@
     }
     .nav-menu li a:hover,
     .nav-menu li.active a {
-      color: #e30000;
+      color: #06c755;
     }
     .nav-search {
       margin-left: auto;
@@ -184,7 +184,7 @@
       width: 140px;
       outline: none;
     }
-    .nav-search input:focus { border-color: #e30000; }
+    .nav-search input:focus { border-color: #06c755; }
     .nav-search-btn {
       background: none;
       border: none;
@@ -220,7 +220,7 @@
       gap: 4px;
     }
     .breadcrumb a {
-      color: #e30000;
+      color: #06c755;
     }
     .breadcrumb a:hover { text-decoration: underline; }
     .breadcrumb .sep { color: #ccc; }
@@ -229,12 +229,14 @@
     .article-card {
       background: #fff;
       padding: 20px 24px 28px;
+      border-top: 5px solid #06c755;
+      box-shadow: 0 6px 24px rgba(0,0,0,.06);
     }
 
     /* 分類標籤 */
     .cat-tag {
       display: inline-block;
-      background: #e30000;
+      background: #06c755;
       color: #fff;
       font-size: 12px;
       font-weight: 700;
@@ -246,11 +248,103 @@
 
     /* H1 文章標題 */
     .article-h1 {
-      font-size: 26px;
+      font-size: 30px;
       font-weight: 900;
       color: #111;
-      line-height: 1.45;
+      line-height: 1.35;
       margin-bottom: 12px;
+    }
+
+    .self-check-panel {
+      background: linear-gradient(135deg, #f0fff5 0%, #ffffff 58%, #e8fff0 100%);
+      border: 1px solid #b7efc5;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 14px 0 16px;
+    }
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .benefit-chip {
+      background: #fff;
+      border: 1px solid #b7efc5;
+      border-radius: 8px;
+      padding: 9px 8px;
+      text-align: center;
+      color: #064f22;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-action-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-cta-btn {
+      background: linear-gradient(135deg, #06c755 0%, #02a945 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 7px 18px rgba(6,199,85,.28);
+      white-space: nowrap;
+    }
+    .hero-cta-note {
+      color: #4f6b58;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .steps-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0 18px;
+    }
+    .step-card {
+      border: 1px solid #d7eadc;
+      background: #fbfffc;
+      border-radius: 8px;
+      padding: 11px 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      min-height: 62px;
+    }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #06c755;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-card strong {
+      display: block;
+      color: #0d2f1a;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+    .step-card span:last-child {
+      color: #688271;
+      font-size: 12px;
+      line-height: 1.3;
     }
 
     /* 記者 / 時間 / 瀏覽 */
@@ -265,11 +359,11 @@
       border-bottom: 1px solid #eee;
       margin-bottom: 16px;
     }
-    .article-byline .reporter { color: #e30000; font-weight: 500; }
+    .article-byline .reporter { color: #06c755; font-weight: 500; }
     .article-byline .live-dot {
       display: inline-block;
       width: 7px; height: 7px;
-      background: #e30000;
+      background: #06c755;
       border-radius: 50%;
       animation: blink 1.2s ease-in-out infinite;
       margin-right: 3px;
@@ -303,15 +397,15 @@
 
     /* 緊急提示橫幅 */
     .urgency-strip {
-      background: #fff3cd;
-      border-left: 4px solid #e30000;
+      background: #f0fff5;
+      border-left: 4px solid #06c755;
       padding: 10px 14px;
       font-size: 14px;
       color: #333;
       margin-bottom: 20px;
       line-height: 1.6;
     }
-    .urgency-strip strong { color: #e30000; }
+    .urgency-strip strong { color: #009b43; }
 
     /* 文章主圖 */
     .article-main-img {
@@ -347,24 +441,24 @@
     .article-body h2 {
       font-size: 19px;
       font-weight: 700;
-      color: #e30000;
-      border-bottom: 2px solid #e30000;
+      color: #009b43;
+      border-bottom: 2px solid #06c755;
       padding-bottom: 6px;
       margin: 28px 0 14px;
     }
 
     /* 資料框（替代 highlight-box） */
     .data-box {
-      background: #fff8f8;
-      border: 1px solid #ffd5d5;
-      border-left: 4px solid #e30000;
+      background: #f0fff5;
+      border: 1px solid #b7efc5;
+      border-left: 4px solid #06c755;
       padding: 14px 16px;
       margin: 20px 0;
       font-size: 14px;
       line-height: 1.75;
       color: #444;
     }
-    .data-box strong { color: #e30000; }
+    .data-box strong { color: #009b43; }
 
     /* 對比表格 */
     .compare-wrap {
@@ -377,7 +471,7 @@
       font-size: 14px;
     }
     .compare-table th {
-      background: #e30000;
+      background: #06c755;
       color: #fff;
       padding: 10px 12px;
       text-align: center;
@@ -398,7 +492,7 @@
       color: #333;
       white-space: nowrap;
     }
-    .compare-table td.good { color: #007a2f; }
+    .compare-table td.good { color: #009b43; font-weight: 700; }
     .compare-table td.bad { color: #999; }
 
     /* 即時數據條 */
@@ -415,7 +509,7 @@
     }
     .live-stats .dot {
       width: 8px; height: 8px;
-      background: #e30000;
+      background: #06c755;
       border-radius: 50%;
       flex-shrink: 0;
       animation: blink 1.2s ease-in-out infinite;
@@ -901,13 +995,13 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
-    .hot-num.top3 { background: #e30000; }
+    .hot-num.top3 { background: #06c755; }
 
     .sidebar-stats { font-size: 13px; color: #555; line-height: 2.1; }
-    .sidebar-stats .stat-val { font-weight: 700; color: #e30000; }
+    .sidebar-stats .stat-val { font-weight: 700; color: #009b43; }
 
     .sidebar-cta {
-      background: #e30000;
+      background: #06c755;
       color: #fff;
       padding: 14px;
       text-align: center;
@@ -918,7 +1012,7 @@
     .sidebar-cta p { font-size: 12px; opacity: .85; margin-bottom: 10px; }
     .sidebar-cta button {
       background: #fff;
-      color: #e30000;
+      color: #009b43;
       border: none;
       border-radius: 3px;
       padding: 6px 16px;
@@ -936,10 +1030,10 @@
       left: 0;
       right: 0;
       background: #fff;
-      border-top: 4px solid #e30000;
+      border-top: 4px solid #06c755;
       padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
       z-index: 900;
-      box-shadow: 0 -4px 20px rgba(227,0,0,.2);
+      box-shadow: 0 -4px 20px rgba(6,199,85,.18);
     }
     .float-cta-inner {
       display: flex;
@@ -952,11 +1046,11 @@
       color: #888;
       line-height: 1.4;
     }
-    .float-cta-text strong { color: #e30000; font-size: 12px; }
+    .float-cta-text strong { color: #009b43; font-size: 12px; }
     .float-cta-btn {
       display: block;
       width: 100%;
-      background: linear-gradient(135deg, #e30000 0%, #ff2020 100%);
+      background: linear-gradient(135deg, #06c755 0%, #02a945 100%);
       color: #fff;
       border: none;
       border-radius: 6px;
@@ -967,12 +1061,12 @@
       text-align: center;
       font-family: inherit;
       letter-spacing: 0.5px;
-      box-shadow: 0 3px 12px rgba(227,0,0,.4);
+      box-shadow: 0 3px 12px rgba(6,199,85,.35);
       animation: ctaPulse 2.5s ease-in-out infinite;
     }
     @keyframes ctaPulse {
-      0%, 100% { box-shadow: 0 3px 12px rgba(227,0,0,.4); }
-      50% { box-shadow: 0 3px 20px rgba(227,0,0,.7); }
+      0%, 100% { box-shadow: 0 3px 12px rgba(6,199,85,.35); }
+      50% { box-shadow: 0 3px 20px rgba(6,199,85,.62); }
     }
 
     /* ===== MODAL ===== */
@@ -1036,6 +1130,11 @@
       }
       .sidebar { width: 100%; }
       .article-h1 { font-size: 20px; }
+      .self-check-panel { padding: 12px; margin-top: 12px; }
+      .benefit-grid { grid-template-columns: 1fr 1fr; gap: 7px; }
+      .hero-action-row { flex-direction: column; align-items: stretch; gap: 8px; }
+      .hero-cta-btn { width: 100%; font-size: 16px; }
+      .steps-strip { grid-template-columns: 1fr; gap: 8px; }
       .article-body h2 { font-size: 17px; }
       .form-grid { grid-template-columns: 1fr; }
       .options-grid { grid-template-columns: 1fr 1fr; }
@@ -1117,6 +1216,19 @@
 
       <h1 class="article-h1">急需 10萬到100萬周轉？有信貸、車貸、房貸也先別放棄，1分鐘線上測可評估額度</h1>
 
+      <div class="self-check-panel">
+        <div class="benefit-grid">
+          <div class="benefit-chip">最高可評估<br>100萬</div>
+          <div class="benefit-chip">有既有貸款<br>可先試</div>
+          <div class="benefit-chip">60歲以下<br>可評估</div>
+          <div class="benefit-chip">LINE專員<br>協助確認</div>
+        </div>
+        <div class="hero-action-row">
+          <button class="hero-cta-btn" onclick="scrollToForm()">立即測額度 →</button>
+          <div class="hero-cta-note">先選需求金額，系統完成初步分類後，再由專員透過 LINE 協助確認下一步。</div>
+        </div>
+      </div>
+
       <div class="article-byline">
         <span><span class="live-dot"></span>即時更新</span>
         <span>記者 <span class="reporter">林雅婷</span> 報導</span>
@@ -1153,6 +1265,21 @@
 
         <div class="data-box">
           💡 <strong>先測額度再決定：</strong>本頁為免費初步自測，不收取試算費。填寫後先由專員確認條件與方向，實際額度、利率與撥款時間仍以合作單位最終審核為準。
+        </div>
+
+        <div class="steps-strip">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <span><strong>選需求金額</strong><span>先看 10萬到100萬方向</span></span>
+          </div>
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <span><strong>確認基本條件</strong><span>既有貸款也可先試算</span></span>
+          </div>
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <span><strong>LINE專員協助</strong><span>送出後確認後續資料</span></span>
+          </div>
         </div>
 
         <h2>有既有貸款也可先試，重點是先知道方向</h2>
@@ -1511,9 +1638,9 @@
 <div class="float-cta">
   <div class="float-cta-inner">
     <div class="float-cta-text">
-      <strong>⚡ 今日名額剩餘倒數中</strong><br/>不影響聯徵・1分鐘完成
+      <strong>⚡ 最高可評估 100萬</strong><br/>有既有貸款也可先測
     </div>
-    <button class="float-cta-btn" onclick="scrollToForm()" style="flex-shrink:0;width:auto;padding:14px 20px;white-space:nowrap;">立即免費評估 →</button>
+    <button class="float-cta-btn" onclick="scrollToForm()" style="flex-shrink:0;width:auto;padding:14px 20px;white-space:nowrap;">立即測額度 →</button>
   </div>
 </div>
 

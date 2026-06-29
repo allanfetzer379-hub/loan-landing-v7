@@ -1124,6 +1124,17 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       html, body { overflow-x: hidden; }
+      .top-nav { padding: 0 12px; }
+      .top-nav-inner { height: 48px; }
+      .site-logo {
+        min-width: 0;
+        max-width: 100%;
+        margin-right: 0;
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
       .page-container {
         flex-direction: column;
         padding: 12px 12px 80px;
@@ -1141,6 +1152,7 @@
       .float-cta { display: block; }
       body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
       .nav-menu { display: none; }
+      .nav-search { display: none; }
       .article-card { padding: 14px 14px 20px; }
       .comments-section { padding: 14px; }
     }

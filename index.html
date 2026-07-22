@@ -413,12 +413,79 @@
       border-radius: 2px;
       margin-bottom: 8px;
       background: #e8e8e8;
-      min-height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      overflow: hidden;
       color: #aaa;
       font-size: 13px;
+    }
+    .article-main-img picture,
+    .article-main-img img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .approval-screen {
+      position: absolute;
+      left: 31.45%;
+      top: 30.8%;
+      width: 13.25%;
+      height: 38.4%;
+      border-radius: 9% / 5%;
+      background: linear-gradient(180deg, #fff 0%, #f4fff7 100%);
+      color: #163c25;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 8px 3px;
+      text-align: center;
+      line-height: 1.15;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(20, 80, 45, .08);
+    }
+    .approval-check {
+      width: clamp(20px, 2.8vw, 34px);
+      height: clamp(20px, 2.8vw, 34px);
+      border: 2px solid #06c755;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 2px;
+    }
+    .approval-check::after {
+      content: "";
+      position: absolute;
+      left: 26%;
+      top: 21%;
+      width: 38%;
+      height: 20%;
+      border-left: 2px solid #06c755;
+      border-bottom: 2px solid #06c755;
+      transform: rotate(-45deg);
+    }
+    .approval-title {
+      color: #057d37;
+      font-size: clamp(8px, 1vw, 12px);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .approval-label {
+      color: #63756a;
+      font-size: clamp(7px, .78vw, 9px);
+      white-space: nowrap;
+    }
+    .approval-amount {
+      color: #073e20;
+      font-size: clamp(11px, 1.45vw, 18px);
+      font-weight: 900;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .approval-amount small {
+      display: block;
+      font-size: .62em;
+      color: #057d37;
+      margin-bottom: 1px;
     }
     .img-caption {
       font-size: 12px;
@@ -1155,6 +1222,18 @@
       .nav-search { display: none; }
       .article-card { padding: 14px 14px 20px; }
       .comments-section { padding: 14px; }
+      .approval-screen {
+        left: 15.3%;
+        top: 30.8%;
+        width: 24.7%;
+        height: 38.4%;
+        gap: 3px;
+        padding: 6px 2px;
+      }
+      .approval-check { width: 24px; height: 24px; }
+      .approval-title { font-size: clamp(8px, 2.5vw, 11px); }
+      .approval-label { font-size: clamp(7px, 2.1vw, 9px); }
+      .approval-amount { font-size: clamp(11px, 3.45vw, 15px); }
     }
     @media (max-width: 380px) {
       .article-h1 { font-size: 18px; }
@@ -1262,9 +1341,12 @@
 
       <!-- 文章主圖 -->
       <div class="article-main-img">
-        <img src="img_stress.jpg" alt="民眾因資金周轉問題愁眉苦臉" onerror="this.parentElement.innerHTML='▲ 示意圖／達志影像'" />
+        <picture>
+          <source media="(max-width: 768px)" srcset="img_couple-mobile.webp" width="720" height="900" />
+          <img src="img_couple-desktop.webp" width="1200" height="800" fetchpriority="high" decoding="async" alt="台灣年輕夫妻一起面對家庭資金周轉壓力" onerror="this.closest('.article-main-img').textContent='圖片載入中'" />
+        </picture>
       </div>
-      <p class="img-caption">▲ 許多台灣中生代因資金周轉問題而深感壓力（示意圖／達志影像）</p>
+      <p class="img-caption">▲ 面對家庭支出與既有貸款，許多年輕夫妻最想先知道自己還有多少周轉空間（情境示意圖）</p>
 
       <!-- 文章內文 -->
       <div class="article-body">
@@ -1341,9 +1423,18 @@
         </div>
 
         <div class="article-main-img" style="margin-top:4px;">
-          <img src="img_happy.jpg" alt="成功取得周轉金的民眾" onerror="this.parentElement.innerHTML='▲ 示意圖／達志影像'" />
+          <picture>
+            <source media="(max-width: 768px)" srcset="img_success_woman-mobile.webp" width="720" height="900" />
+            <img src="img_success_woman-desktop.webp" width="1200" height="800" loading="lazy" decoding="async" alt="台灣女性查看最高一百萬元額度審核結果" onerror="this.closest('.article-main-img').textContent='圖片載入中'" />
+          </picture>
+          <div class="approval-screen" aria-hidden="true">
+            <span class="approval-check"></span>
+            <span class="approval-title">額度審核通過</span>
+            <span class="approval-label">最高核准額度</span>
+            <strong class="approval-amount"><small>NT$</small>1,000,000</strong>
+          </div>
         </div>
-        <p class="img-caption">▲ 成功取得周轉金的民眾表示如釋重負（示意圖／達志影像）</p>
+        <p class="img-caption">▲ 最高可評估 100 萬，實際額度、利率與撥款結果仍依合作單位最終審核為準（情境示意圖）</p>
 
         <p>如果您現在需要 10 萬以上周轉，或想知道自己是否有機會評估到更高額度，不要先猜，直接從下方選擇需求金額開始。送出後，中喬專員會優先透過 LINE 與您確認資料；<strong>實際額度、利率與撥款時間，仍以合作單位最終審核為準。</strong></p>
 

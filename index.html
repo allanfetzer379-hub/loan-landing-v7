@@ -525,6 +525,7 @@
       border: 2px solid #b7efc5;
       border-radius: 10px;
       margin-top: 28px;
+      scroll-margin-top: 104px;
       padding: 0;
       overflow: hidden;
       box-shadow: 0 8px 28px rgba(6,199,85,.14);
@@ -582,7 +583,14 @@
 
     /* 步驟 */
     .quiz-step { display: none; }
-    .quiz-step.active { display: block; }
+    .quiz-step.active {
+      display: block;
+      animation: stepEnter .28s ease both;
+    }
+    @keyframes stepEnter {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     .step-title {
       font-size: 15px;
@@ -658,6 +666,18 @@
     .option-btn.selected .option-icon {
       border-color: #06c755;
       background: #06c755;
+      position: relative;
+    }
+    .option-btn.selected .option-icon::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 1px;
+      width: 5px;
+      height: 8px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(45deg);
     }
 
     .next-btn {
@@ -675,6 +695,47 @@
       font-family: inherit;
     }
     .next-btn:hover { background: #05a847; }
+
+    .auto-step-hint {
+      min-height: 22px;
+      margin-top: 10px;
+      color: #64806d;
+      font-size: 12px;
+      line-height: 1.55;
+      text-align: center;
+    }
+    .auto-step-hint.is-ready {
+      color: #008f3d;
+      font-weight: 700;
+    }
+    .condition-progress {
+      background: #fff;
+      border: 1px solid #d9eee0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+    }
+    .condition-progress-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+      color: #5f6f64;
+      font-size: 12px;
+    }
+    .condition-progress-head strong { color: #008f3d; }
+    .condition-progress-track {
+      height: 5px;
+      overflow: hidden;
+      background: #e7eee9;
+      border-radius: 2px;
+    }
+    .condition-progress-bar {
+      width: 0;
+      height: 100%;
+      background: #06c755;
+      transition: width .24s ease;
+    }
 
     /* Step 3 估算卡 */
     .estimate-card {
@@ -707,6 +768,99 @@
       border-radius: 20px;
     }
 
+    .application-summary {
+      margin: 0 0 16px;
+      border-top: 1px solid #dce9df;
+      border-bottom: 1px solid #dce9df;
+    }
+    .application-summary-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 0;
+      color: #203a29;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .application-summary-title span {
+      color: #7a8c80;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .summary-row {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      border-top: 1px solid #edf2ee;
+      font-size: 13px;
+    }
+    .summary-row > span { color: #7f8c83; }
+    .summary-row > strong {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: #263f2d;
+      font-size: 13px;
+    }
+    .summary-edit {
+      border: 0;
+      background: transparent;
+      color: #008f3d;
+      padding: 7px 2px 7px 8px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .edit-options-panel {
+      padding: 12px 0 14px;
+      border-top: 1px solid #dce9df;
+    }
+    .edit-options-panel[hidden] { display: none; }
+    .edit-options-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: #243c2b;
+      font-size: 13px;
+    }
+    .edit-options-close {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #d7e3da;
+      border-radius: 50%;
+      background: #fff;
+      color: #617066;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .edit-options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .edit-choice {
+      min-height: 44px;
+      border: 1px solid #d7e3da;
+      border-radius: 6px;
+      background: #fff;
+      color: #34483a;
+      padding: 9px 10px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .edit-choice.selected {
+      border-color: #06c755;
+      background: #ecfff2;
+      color: #057d37;
+    }
+
     /* 表單 */
     .form-notice {
       background: #f0f7ff;
@@ -722,6 +876,30 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
       margin-bottom: 14px;
+    }
+    .form-completion {
+      margin: 0 0 14px;
+    }
+    .form-completion-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #78837b;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .form-completion-head strong { color: #008f3d; }
+    .form-completion-track {
+      height: 5px;
+      overflow: hidden;
+      background: #e6ece8;
+      border-radius: 2px;
+    }
+    .form-completion-bar {
+      width: 0;
+      height: 100%;
+      background: #06c755;
+      transition: width .2s ease;
     }
     .form-group {
       display: flex;
@@ -1159,6 +1337,10 @@
       .nav-search { display: none; }
       .article-card { padding: 14px 14px 20px; }
       .comments-section { padding: 14px; }
+      .form-group input,
+      .form-group select { font-size: 16px; min-height: 46px; }
+      .summary-row { grid-template-columns: 70px minmax(0, 1fr) auto; }
+      body.application-step-active .float-cta { display: none; }
     }
     @media (max-width: 380px) {
       .article-h1 { font-size: 18px; }
@@ -1382,21 +1564,21 @@
           <div class="question-block">
             <p class="question-text">👇 選擇您的需求金額，立即查看可申請額度</p>
             <div class="options-grid">
-              <button class="option-btn" data-q="q3" data-v="10萬–20萬" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q3" data-v="10萬–20萬" onclick="selectAmountAndContinue(this)">
                 <span class="option-icon"></span> 10萬 – 20萬
               </button>
-              <button class="option-btn" data-q="q3" data-v="20萬–30萬" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q3" data-v="20萬–30萬" onclick="selectAmountAndContinue(this)">
                 <span class="option-icon"></span> 20萬 – 30萬
               </button>
-              <button class="option-btn" data-q="q3" data-v="30萬–50萬" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q3" data-v="30萬–50萬" onclick="selectAmountAndContinue(this)">
                 <span class="option-icon"></span> 30萬 – 50萬
               </button>
-              <button class="option-btn" data-q="q3" data-v="50萬以上" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q3" data-v="50萬以上" onclick="selectAmountAndContinue(this)">
                 <span class="option-icon"></span> 50萬以上
               </button>
             </div>
           </div>
-          <button class="next-btn" onclick="nextStep(1)">下一步，開始免費試算額度 →</button>
+          <div class="auto-step-hint" id="amount-step-hint" aria-live="polite">選擇金額後自動進入基本條件確認</div>
         </div>
 
         <!-- STEP 2 -->
@@ -1404,13 +1586,20 @@
           <div class="step-title">
             <span class="step-badge">2</span> 快速確認基本條件
           </div>
+          <div class="condition-progress">
+            <div class="condition-progress-head">
+              <span>三題可快速連續選擇</span>
+              <strong id="condition-progress-text" aria-live="polite">已完成 0/3</strong>
+            </div>
+            <div class="condition-progress-track"><div class="condition-progress-bar" id="condition-progress-bar"></div></div>
+          </div>
           <div class="question-block">
             <p class="question-text">Q2. 您目前是否有其他既有貸款？</p>
             <div class="options-grid">
-              <button class="option-btn" data-q="q1" data-v="無貸款" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q1" data-v="無貸款" onclick="selectConditionOption(this)">
                 <span class="option-icon"></span> 無貸款
               </button>
-              <button class="option-btn" data-q="q1" data-v="有既有貸款" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q1" data-v="有既有貸款" onclick="selectConditionOption(this)">
                 <span class="option-icon"></span> 有（信貸/房貸/汽貸/機車貸）
               </button>
             </div>
@@ -1418,10 +1607,10 @@
           <div class="question-block">
             <p class="question-text">Q3. 您目前的銀行帳戶狀態是否正常？</p>
             <div class="options-grid">
-              <button class="option-btn" data-q="q2" data-v="帳戶正常" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q2" data-v="帳戶正常" onclick="selectConditionOption(this)">
                 <span class="option-icon"></span> 是，皆正常
               </button>
-              <button class="option-btn" data-q="q2" data-v="警示戶" onclick="selectOption(this, true)">
+              <button type="button" class="option-btn" data-q="q2" data-v="警示戶" onclick="selectConditionOption(this, true)">
                 <span class="option-icon"></span> 否，屬於銀行警示戶
               </button>
             </div>
@@ -1429,21 +1618,21 @@
           <div class="question-block">
             <p class="question-text">Q4. 您是否持有個人外幣帳戶？</p>
             <div class="options-grid">
-              <button class="option-btn" data-q="q4" data-v="有外幣帳戶" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q4" data-v="有外幣帳戶" onclick="selectConditionOption(this)">
                 <span class="option-icon"></span> 是
               </button>
-              <button class="option-btn" data-q="q4" data-v="無外幣帳戶" onclick="selectOption(this)">
+              <button type="button" class="option-btn" data-q="q4" data-v="無外幣帳戶" onclick="selectConditionOption(this)">
                 <span class="option-icon"></span> 否
               </button>
             </div>
           </div>
-          <button class="next-btn" onclick="nextStep(2)">查看試算結果 →</button>
+          <div class="auto-step-hint" id="condition-step-hint" aria-live="polite">完成三題後自動進入資料填寫</div>
         </div>
 
         <!-- STEP 3 -->
         <div class="quiz-step" id="step-3">
           <div class="step-title">
-            <span class="step-badge">3</span> 初步試算結果
+            <span class="step-badge">3</span> 最後一步：填寫聯絡資料
           </div>
           <div class="estimate-card">
             <div class="estimate-label">您選擇的需求金額</div>
@@ -1456,19 +1645,42 @@
             </div>
           </div>
 
+          <div class="application-summary">
+            <div class="application-summary-title">
+              <strong>您的申請內容</strong>
+              <span>選錯可直接修改</span>
+            </div>
+            <div id="application-summary"></div>
+            <div class="edit-options-panel" id="edit-options-panel" hidden>
+              <div class="edit-options-head">
+                <strong id="edit-options-title">修改申請內容</strong>
+                <button type="button" class="edit-options-close" onclick="closeEditOption()" aria-label="關閉修改選項" title="關閉">×</button>
+              </div>
+              <div class="edit-options-grid" id="edit-options-grid"></div>
+            </div>
+          </div>
+
           <div class="form-notice">
             🎉 <strong>【中喬資產管理・試算完成】</strong>請填寫以下真實資訊以完成名額登記。送出後，中喬專員將優先透過 LINE 與您確認可評估方案與後續資料。
+          </div>
+
+          <div class="form-completion">
+            <div class="form-completion-head">
+              <span>資料填寫進度</span>
+              <strong id="form-progress-text" aria-live="polite">已填寫 0/6</strong>
+            </div>
+            <div class="form-completion-track"><div class="form-completion-bar" id="form-completion-bar"></div></div>
           </div>
 
           <form id="apply-form" onsubmit="submitForm(event)">
             <div class="form-grid">
               <div class="form-group">
                 <label>真實姓名 *</label>
-                <input type="text" id="f-name" placeholder="例：張志豪" required autocomplete="name" />
+                <input type="text" id="f-name" placeholder="例：張志豪" required autocomplete="name" enterkeyhint="next" />
               </div>
               <div class="form-group">
                 <label>目前年齡 *</label>
-                <input type="number" id="f-age" placeholder="限 60 歲以下" min="18" max="60" required inputmode="numeric" />
+                <input type="number" id="f-age" placeholder="限 60 歲以下" min="18" max="60" required inputmode="numeric" enterkeyhint="next" />
               </div>
               <div class="form-group">
                 <label>現居縣市 *</label>
@@ -1486,20 +1698,20 @@
               </div>
               <div class="form-group">
                 <label>身分證字號 *</label>
-                <input type="text" id="f-id" placeholder="例：A123456789" maxlength="10" required autocomplete="off" />
+                <input type="text" id="f-id" placeholder="例：A123456789" maxlength="10" required autocomplete="off" enterkeyhint="next" />
                 <span class="id-hint">🔒 身分證僅用於 AI 自動過濾黑名單，跳過傳統聯徵查詢，絕不留存紀錄！</span>
               </div>
               <div class="form-group">
                 <label>手機號碼 *</label>
-                <input type="tel" id="f-phone" placeholder="例：0954xxxxxx" required inputmode="tel" autocomplete="tel" />
+                <input type="tel" id="f-phone" placeholder="例：0954xxxxxx" required inputmode="tel" autocomplete="tel" enterkeyhint="next" />
               </div>
               <div class="form-group">
                 <label>常用 LINE ID *</label>
-                <input type="text" id="f-line" placeholder="例：@yourlineid" required />
+                <input type="text" id="f-line" placeholder="例：@yourlineid" required enterkeyhint="done" />
                 <span class="id-hint">重要：專員將優先透過 LINE 確認核貸額度</span>
               </div>
             </div>
-            <button type="submit" class="cta-btn">👉 提交資料，讓專員確認可評估額度</button>
+            <button type="submit" class="cta-btn" id="application-submit-btn">提交資料，讓專員確認可評估額度</button>
           </form>
           <div class="ssl-badge">🔒 中喬資產管理嚴格遵守《個人資料保護法》，256-bit SSL 加密傳輸，絕不洩漏個資，不影響聯徵紀錄。</div>
         </div>
@@ -1825,10 +2037,49 @@ setInterval(function() {
 var answers = {};
 var currentStep = 1;
 var totalSteps = 3;
+var amountTransitionTimer = null;
+var conditionTransitionTimer = null;
+var stepTransitionLocked = false;
 var progressLabels = {
   1: '第 1 步：選擇需求金額',
   2: '第 2 步：確認基本條件',
-  3: '第 3 步：查看初步結果'
+  3: '第 3 步：填寫聯絡資料'
+};
+var editChoiceGroups = {
+  q3: {
+    title: '修改申請金額',
+    label: '申請金額',
+    options: [
+      { value: '10萬–20萬', label: '10萬 – 20萬' },
+      { value: '20萬–30萬', label: '20萬 – 30萬' },
+      { value: '30萬–50萬', label: '30萬 – 50萬' },
+      { value: '50萬以上', label: '50萬以上' }
+    ]
+  },
+  q1: {
+    title: '修改既有貸款',
+    label: '既有貸款',
+    options: [
+      { value: '無貸款', label: '無貸款' },
+      { value: '有既有貸款', label: '有（信貸/房貸/汽貸/機車貸）' }
+    ]
+  },
+  q2: {
+    title: '修改銀行帳戶狀態',
+    label: '銀行帳戶',
+    options: [
+      { value: '帳戶正常', label: '是，皆正常' },
+      { value: '警示戶', label: '否，屬於銀行警示戶', disqualify: true }
+    ]
+  },
+  q4: {
+    title: '修改外幣帳戶',
+    label: '外幣帳戶',
+    options: [
+      { value: '有外幣帳戶', label: '是' },
+      { value: '無外幣帳戶', label: '否' }
+    ]
+  }
 };
 
 function updateProgress(step) {
@@ -1847,15 +2098,68 @@ function selectOption(btn, isDisqualify) {
   answers[q] = v;
 
   if (isDisqualify) {
+    delete answers[q];
     setTimeout(function() {
       showModal('⚠️ 很抱歉', '目前銀行警示戶暫不符合申辦資格。建議先解除警示戶狀態後再行申辦。');
       btn.classList.remove('selected');
-      delete answers[q];
     }, 300);
+    return false;
+  }
+  return true;
+}
+
+function selectAmountAndContinue(btn) {
+  if (currentStep !== 1 || stepTransitionLocked) return;
+  if (!selectOption(btn)) return;
+  clearTimeout(amountTransitionTimer);
+  var hint = document.getElementById('amount-step-hint');
+  if (hint) {
+    hint.textContent = '已選擇 ' + answers.q3 + '，正在進入基本條件確認';
+    hint.classList.add('is-ready');
+  }
+  amountTransitionTimer = setTimeout(function() {
+    if (currentStep !== 1 || !answers.q3) return;
+    stepTransitionLocked = true;
+    nextStep(1);
+    stepTransitionLocked = false;
+  }, 340);
+}
+
+function selectConditionOption(btn, isDisqualify) {
+  if (currentStep !== 2 || stepTransitionLocked) return;
+  clearTimeout(conditionTransitionTimer);
+  if (!selectOption(btn, isDisqualify)) {
+    updateConditionProgress();
+    return;
+  }
+  updateConditionProgress();
+}
+
+function updateConditionProgress() {
+  var keys = ['q1', 'q2', 'q4'];
+  var completed = keys.filter(function(key) { return !!answers[key]; }).length;
+  var text = document.getElementById('condition-progress-text');
+  var bar = document.getElementById('condition-progress-bar');
+  var hint = document.getElementById('condition-step-hint');
+  if (text) text.textContent = completed === 3 ? '基本條件已確認' : ('已完成 ' + completed + '/3');
+  if (bar) bar.style.width = Math.round(completed / 3 * 100) + '%';
+  if (hint) {
+    hint.textContent = completed === 3 ? '三題已完成，正在進入資料填寫' : '完成三題後自動進入資料填寫';
+    hint.classList.toggle('is-ready', completed === 3);
+  }
+  if (completed === 3 && currentStep === 2) {
+    conditionTransitionTimer = setTimeout(function() {
+      var stillComplete = keys.every(function(key) { return !!answers[key]; });
+      if (!stillComplete || currentStep !== 2) return;
+      stepTransitionLocked = true;
+      nextStep(2);
+      stepTransitionLocked = false;
+    }, 520);
   }
 }
 
 function nextStep(from) {
+  if (currentStep !== from) return;
   var requiredQ = from === 1 ? ['q3'] : ['q1','q2','q4'];
   for (var i = 0; i < requiredQ.length; i++) {
     if (!answers[requiredQ[i]]) {
@@ -1875,6 +2179,7 @@ function nextStep(from) {
   var next = from + 1;
   document.getElementById('step-' + next).classList.add('active');
   currentStep = next;
+  document.body.classList.toggle('application-step-active', next === 3);
   updateProgress(next);
   if (next === 3) updateEstimateCard();
   document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1884,7 +2189,91 @@ function updateEstimateCard() {
   var amount = answers['q3'] || '待確認';
   var amountEl = document.getElementById('estimate-amount');
   if (amountEl) amountEl.textContent = amount;
+  renderApplicationSummary();
+  updateFormProgress();
 }
+
+function renderApplicationSummary() {
+  var summary = document.getElementById('application-summary');
+  if (!summary) return;
+  var keys = ['q3', 'q1', 'q2', 'q4'];
+  summary.innerHTML = keys.map(function(key) {
+    var group = editChoiceGroups[key];
+    return '<div class="summary-row">' +
+      '<span>' + group.label + '</span>' +
+      '<strong>' + (answers[key] || '待確認') + '</strong>' +
+      '<button type="button" class="summary-edit" onclick="openEditOption(\'' + key + '\')">修改</button>' +
+    '</div>';
+  }).join('');
+}
+
+function openEditOption(key) {
+  var group = editChoiceGroups[key];
+  var panel = document.getElementById('edit-options-panel');
+  var title = document.getElementById('edit-options-title');
+  var grid = document.getElementById('edit-options-grid');
+  if (!group || !panel || !title || !grid) return;
+  title.textContent = group.title;
+  grid.innerHTML = group.options.map(function(option) {
+    var selected = answers[key] === option.value ? ' selected' : '';
+    return '<button type="button" class="edit-choice' + selected + '" onclick="applyEditedAnswer(\'' + key + '\',\'' + option.value + '\',' + (option.disqualify ? 'true' : 'false') + ')">' + option.label + '</button>';
+  }).join('');
+  panel.hidden = false;
+}
+
+function closeEditOption() {
+  var panel = document.getElementById('edit-options-panel');
+  if (panel) panel.hidden = true;
+}
+
+function applyEditedAnswer(key, value, isDisqualify) {
+  if (isDisqualify) {
+    showModal('⚠️ 很抱歉', '目前銀行警示戶暫不符合申辦資格。建議先解除警示戶狀態後再行申辦。');
+    return;
+  }
+  answers[key] = value;
+  document.querySelectorAll('.option-btn[data-q="' + key + '"]').forEach(function(btn) {
+    btn.classList.toggle('selected', btn.getAttribute('data-v') === value);
+  });
+  updateEstimateCard();
+  closeEditOption();
+}
+
+function updateFormProgress() {
+  var fields = Array.from(document.querySelectorAll('#apply-form input, #apply-form select'));
+  if (!fields.length) return;
+  var completed = fields.filter(function(field) { return String(field.value || '').trim() !== ''; }).length;
+  var text = document.getElementById('form-progress-text');
+  var bar = document.getElementById('form-completion-bar');
+  var submit = document.getElementById('application-submit-btn');
+  var amount = answers.q3 || '申請';
+  if (text) text.textContent = completed === fields.length ? '資料已填寫完整' : ('已填寫 ' + completed + '/' + fields.length);
+  if (bar) bar.style.width = Math.round(completed / fields.length * 100) + '%';
+  if (submit && !submit.disabled) {
+    submit.textContent = completed === fields.length
+      ? ('資料已完整，立即送出 ' + amount + ' 申請')
+      : ('提交資料，確認 ' + amount + ' 額度');
+  }
+}
+
+function setupFormProgress() {
+  var fields = Array.from(document.querySelectorAll('#apply-form input, #apply-form select'));
+  fields.forEach(function(field, index) {
+    field.addEventListener('input', updateFormProgress);
+    field.addEventListener('change', function() {
+      updateFormProgress();
+      if (field.tagName === 'SELECT' && fields[index + 1]) fields[index + 1].focus();
+    });
+    field.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' && fields[index + 1]) {
+        event.preventDefault();
+        fields[index + 1].focus();
+      }
+    });
+  });
+  updateFormProgress();
+}
+setupFormProgress();
 
 // ============================================================
 function createLeadId() {

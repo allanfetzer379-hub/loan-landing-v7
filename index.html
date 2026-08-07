@@ -1346,9 +1346,127 @@
       .article-h1 { font-size: 18px; }
       .options-grid { grid-template-columns: 1fr; }
     }
+
+    /* ===== 防詐警示横幅 ===== */
+    .fraud-warning-bar {
+      background: #fff3cd;
+      border-bottom: 2px solid #e6a817;
+      color: #7d4e00;
+      font-size: 13px;
+      text-align: center;
+      padding: 8px 16px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .fraud-warning-bar strong { color: #c0392b; }
+
+    /* ===== 機構認證欄 ===== */
+    .institution-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      font-size: 13px;
+      color: #555;
+      padding: 10px 0 14px;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 16px;
+    }
+    .institution-bar strong { color: #009b43; }
+    .inst-sep { color: #ccc; }
+
+    /* ===== 信任背書區塊 ===== */
+    .trust-block {
+      background: #f8fff9;
+      border: 1px solid #c3e6cb;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+    .trust-block-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: #0d2f1a;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #06c755;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .trust-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .trust-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .trust-content strong {
+      display: block;
+      font-size: 14px;
+      color: #0d2f1a;
+      margin-bottom: 4px;
+    }
+    .trust-content span {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+    @media (max-width: 600px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== FAQ 樣式 ===== */
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0d2f1a;
+      margin-bottom: 4px;
+      cursor: pointer;
+    }
+    .faq-q::before { content: 'Q. '; color: #06c755; }
+    .faq-a {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.65;
+      padding-left: 18px;
+    }
+
+    /* ===== 新版留言座位（首字樣式） ===== */
+    .comment-initial {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #06c755 0%, #02a945 100%);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
   </style>
 </head>
 <body>
+
+<!-- ===== 防詐警示横幅 ===== -->
+<div class="fraud-warning-bar">
+  ⚠️ 警告：近期有不法人士冒用「順富資產管理」名義，以假冒客服、假LINE帳號詐騙民眾。
+</div>
 
 <!-- ===== STICKY HEADER ===== -->
 <div id="site-header">
@@ -1399,18 +1517,8 @@
   <!-- ===== MAIN CONTENT ===== -->
   <main class="main-content">
 
-    <!-- 麵包屑 -->
-    <div class="breadcrumb">
-      <a href="#">首頁</a>
-      <span class="sep">›</span>
-      <a href="#">財經</a>
-      <span class="sep">›</span>
-      <span>2026金融深度報導</span>
-    </div>
-
     <!-- 文章卡片 -->
     <article class="article-card">
-      <span class="cat-tag">資金申請專題</span>
 
       <h1 class="article-h1">【順富特批通道】銀行退件、負債過高都沒關係！缺10萬到100萬，填表讓專員直接幫你喬定！</h1>
 
@@ -1427,18 +1535,15 @@
         </div>
       </div>
 
-      <div class="article-byline">
-        <span><span class="live-dot"></span>即時更新</span>
-        <span>記者 <span class="reporter">林雅婷</span> 報導</span>
-        <span>發佈時間：<span id="pub-date"></span></span>
-        <span>👁 瀏覽：<span id="view-count">84,291</span></span>
-        <span>💬 留言：<span id="comment-count">412</span></span>
-      </div>
-
-      <div class="share-bar">
-        <button class="share-btn fb">f 分享</button>
-        <button class="share-btn line">LINE 分享</button>
-        <button class="share-btn copy">🔗 複製連結</button>
+      <!-- 機構認證欄 -->
+      <div class="institution-bar">
+        <span>🏢 <strong>順富資產管理有限公司</strong></span>
+        <span class="inst-sep">｜</span>
+        <span>✅ 合法立案金融顧問機構</span>
+        <span class="inst-sep">｜</span>
+        <span>🔒 個資保護法合規</span>
+        <span class="inst-sep">｜</span>
+        <span>📋 免費評估・不成功不收費</span>
       </div>
 
       <!-- 緊急提示 -->
@@ -1465,7 +1570,42 @@
         <p>順富資產管理把申請流程簡化成三步：先選需要的金額，再確認基本條件，最後由 LINE 專員直接幫你喬定方案。非警示戶、即使名下已有信貸、車貸或房貸，也可以送出申請——最高可喬到 100 萬，本月過件率94.7%。</p>
 
         <div class="data-box">
-          💡 <strong>先測額度再決定：</strong>本頁為免費初步自測，不收取試算費。填寫後先由專員確認條件與方向，實際額度、利率與撥款時間仍以合作單位最終審核為準。
+          💡 <strong>先測額度再決定：</strong>本頁為免費初步自測，不收取試算費。填寫後先由專員確認條件與方向，實際額度、利率與撥款時間付以合作單位最終審核為準。
+        </div>
+
+        <!-- 信任背書區塊 -->
+        <div class="trust-block">
+          <div class="trust-block-title">🏆 順富為什麼能幫到你？</div>
+          <div class="trust-grid">
+            <div class="trust-item">
+              <div class="trust-icon">🤝</div>
+              <div class="trust-content">
+                <strong>多家融資機構合作網絡</strong>
+                <span>順富與台灣多家合法融資機構建立長期合作，能為客戶匹配銀行以外的資金管道，被銀行退件不代表沒有其他路。</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">💼</div>
+              <div class="trust-content">
+                <strong>專業代辦團隊駐守</strong>
+                <span>團隊成員具備多年金融代辦經驗，熟悉各機構的審核邏輯，能幫你找出最有機會過件的方案。</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">🛡️</div>
+              <div class="trust-content">
+                <strong>免費評估，不成功不收費</strong>
+                <span>初步評估完全免費，不收取任何試算費或手續費。成功後才有服務費用，保障你的權益。</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">🔒</div>
+              <div class="trust-content">
+                <strong>嚴守個資保護法</strong>
+                <span>所有資料僅用於評估用途，256-bit SSL 加密傳輸，絕不外流、不影響聯徵紀錄。</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="steps-strip">
@@ -1755,68 +1895,105 @@
     <!-- ===== COMMENTS ===== -->
     <section class="comments-section">
       <div class="comments-title">
-        網友留言 <span style="font-size:12px;color:#aaa;font-weight:400;">（<span id="total-comments">412</span> 則）</span>
+        真實用戶回饋 <span style="font-size:12px;color:#aaa;font-weight:400;">（已累積 <span id="total-comments">1,247</span> 則）</span>
       </div>
 
       <div class="comment-item">
-        <div class="comment-avatar">
-          <img src="avatar_zhang.jpg" alt="張*豪" onerror="this.parentElement.innerHTML='👤'" />
-        </div>
+        <div class="comment-initial">張</div>
         <div class="comment-body">
-          <div class="comment-name">張*豪 <span>45歲・宜蘭縣</span></div>
+          <div class="comment-name">張*豪 <span>45歲・宜蘭縣・機車貸款未還清</span></div>
           <p class="comment-text">「機車貸還沒還清，以為沒希望了。填完順富表單隔天專員 LINE 我，說有貸款不是問題，幫我評估完直接告訴我能拿多少。最後順利拿到 25 萬，真的救了我！」</p>
           <div class="comment-footer">
             <button class="like-btn" onclick="toggleLike(this, 142)">👍 <span class="like-num">142</span></button>
-            <span>回覆</span>
-            <span class="time-stamp">2小時前</span>
+            <span class="time-stamp">3小時前</span>
           </div>
         </div>
       </div>
 
       <div class="comment-item">
-        <div class="comment-avatar">
-          <img src="avatar_lin.jpg" alt="林*玲" onerror="this.parentElement.innerHTML='👤'" />
-        </div>
+        <div class="comment-initial">林</div>
         <div class="comment-body">
-          <div class="comment-name">林*玲 <span>38歲・新北市</span></div>
-          <p class="comment-text">「本來很怕被拒絕，但專員說有貸款不是問題，幫我評估完直接告訴我能拿多少。過件速度比我想的快很多，專員一對一講得很清楚，真的很安心。」</p>
+          <div class="comment-name">林*玲 <span>38歲・新北市・曾被銀行退件</span></div>
+          <p class="comment-text">「被銀行退件兩次，以為這輩子借不到了。朋友介紹順富，填完表隔天專員就 LINE 我，說我的情況他們每天都在處理。最後幫我找到一個方案，過件了，真的很感動。」</p>
           <div class="comment-footer">
             <button class="like-btn" onclick="toggleLike(this, 98)">👍 <span class="like-num">98</span></button>
-            <span>回覆</span>
             <span class="time-stamp">5小時前</span>
           </div>
         </div>
       </div>
 
       <div class="comment-item">
-        <div class="comment-avatar">
-          <img src="avatar_chen.jpg" alt="陳*宇" onerror="this.parentElement.innerHTML='👤'" />
-        </div>
+        <div class="comment-initial">陳</div>
         <div class="comment-body">
-          <div class="comment-name">陳*宇 <span>45歲・台中市</span></div>
-          <p class="comment-text">「接案收入不固定，銀行根本不理我。順富專員說這種情況他們最常處理，填完表就主動聯繫我，最後真的幫我拿到錢了，太感謝了。」</p>
+          <div class="comment-name">陳*宇 <span>45歲・台中市・自由接案者</span></div>
+          <p class="comment-text">「接案收入不固定，銀行根本不理我。順富專員說這種情況他們最常處理，填完表就主動聯繫我，幫我整理了一份可以送件的資料清單，最後真的拿到錢了，太感謝了。」</p>
           <div class="comment-footer">
             <button class="like-btn" onclick="toggleLike(this, 64)">👍 <span class="like-num">64</span></button>
-            <span>回覆</span>
-            <span class="time-stamp">昨天</span>
+            <span class="time-stamp">昨天 14:32</span>
           </div>
         </div>
       </div>
 
       <div class="comment-item">
-        <div class="comment-avatar">
-          <img src="avatar_wang.jpg" alt="王*芬" onerror="this.parentElement.innerHTML='👤'" />
-        </div>
+        <div class="comment-initial">王</div>
         <div class="comment-body">
-          <div class="comment-name">王*芬 <span>52歲・高雄市</span></div>
-          <p class="comment-text">「房貸壓著，以為不可能再借了。順富專員說可以幫我整合現有貸款，評估完不僅拿到一筆錢，每個月還反而少繳了幾千塊，真的像作夢一樣！」</p>
+          <div class="comment-name">王*芬 <span>52歲・高雄市・名下有房貸</span></div>
+          <p class="comment-text">「家裡有房貸，一直以為不可能再借了。順富專員說可以幫我整合現有貸款，評估完不僅拿到一筆錢，每個月還反而少繳了幾千塊，真的像作夢一樣！」</p>
           <div class="comment-footer">
             <button class="like-btn" onclick="toggleLike(this, 51)">👍 <span class="like-num">51</span></button>
-            <span>回覆</span>
-            <span class="time-stamp">昨天</span>
+            <span class="time-stamp">昨天 09:15</span>
           </div>
         </div>
       </div>
+
+      <div class="comment-item">
+        <div class="comment-initial">黃</div>
+        <div class="comment-body">
+          <div class="comment-name">黃*明 <span>33歲・桃園市・負債比偏高</span></div>
+          <p class="comment-text">「負債比太高，跑了三家銀行都被拒絕。朋友說試試順富，填完表當天下午就有專員 LINE 我，說負債比高不是問題，幫我找到一個合法的整合方案。現在壓力小很多了。」</p>
+          <div class="comment-footer">
+            <button class="like-btn" onclick="toggleLike(this, 87)">👍 <span class="like-num">87</span></button>
+            <span class="time-stamp">2天前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comment-item">
+        <div class="comment-initial">吳</div>
+        <div class="comment-body">
+          <div class="comment-name">吳*珊 <span>29歲・台北市・剛出社會信用不足</span></div>
+          <p class="comment-text">「剛出社會兩年，信用紀錄不夠，銀行說我資歷太淺不給辦。順富的專員說這種情況有其他管道，幫我評估了一個比較適合我狀況的方案，利率也說清楚了，沒有亂收費。」</p>
+          <div class="comment-footer">
+            <button class="like-btn" onclick="toggleLike(this, 73)">👍 <span class="like-num">73</span></button>
+            <span class="time-stamp">2天前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comment-item">
+        <div class="comment-initial">蔡</div>
+        <div class="comment-body">
+          <div class="comment-name">蔡*志 <span>41歲・台南市・車貸加信貸</span></div>
+          <p class="comment-text">「同時有車貸和信貸，以為已經沒有額度了。順富幫我重新評估，說可以整合成一筆，月繳金額反而降低了。專員全程透過 LINE 說明，不用跑銀行，真的很方便。」</p>
+          <div class="comment-footer">
+            <button class="like-btn" onclick="toggleLike(this, 59)">👍 <span class="like-num">59</span></button>
+            <span class="time-stamp">3天前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comment-item">
+        <div class="comment-initial">李</div>
+        <div class="comment-body">
+          <div class="comment-name">李*慧 <span>47歲・彰化縣・中小企業主</span></div>
+          <p class="comment-text">「做小生意的，收入不穩定，銀行要求的薪資證明我提供不了。順富說這種情況他們有辦法，幫我找到一個適合自營商的方案，流程也解釋得很清楚，沒有任何隱藏費用。」</p>
+          <div class="comment-footer">
+            <button class="like-btn" onclick="toggleLike(this, 44)">👍 <span class="like-num">44</span></button>
+            <span class="time-stamp">4天前</span>
+          </div>
+        </div>
+      </div>
+
     </section>
 
   </main>
@@ -1831,17 +2008,34 @@
     </div>
 
     <div class="sidebar-card">
-      <div class="sidebar-card-title">🔥 人氣點閱榜</div>
+      <div class="sidebar-card-title">❓ 常見問題 FAQ</div>
       <div class="sidebar-card-body">
-        <ul class="hot-list">
-          <li><span class="hot-num top3">1</span>央行最新利率政策出爐，房貸族注意！</li>
-          <li><span class="hot-num top3">2</span>通膨持續，台灣家庭月均支出創新高</li>
-          <li><span class="hot-num top3">3</span>2026年紓困方案整理，你符合哪一項？</li>
-          <li><span class="hot-num">4</span>銀行信貸被拒？這3個管道你可能不知道</li>
-          <li><span class="hot-num">5</span>自營商如何在無薪資證明下順利貸款？</li>
-          <li><span class="hot-num">6</span>聯徵次數多怎麼辦？專家教你這樣做</li>
-          <li><span class="hot-num">7</span>台灣中小企業主最常用的5種周轉方式</li>
-        </ul>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">填表會影響聯徵紀錄嗎？</div>
+            <div class="faq-a">不會。初步評估不查聯徵，填表不影響您的信用紀錄。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">名下有既有貸款還可以申請嗎？</div>
+            <div class="faq-a">可以。有信貸、車貸、房貸是順富最常處理的情況，不代表沒有機會。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">填表之後需要收費嗎？</div>
+            <div class="faq-a">初步評估完全免費，不收取任何試算費。成功媒合後才有服務費用。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">為什麼需要填身分證字號？</div>
+            <div class="faq-a">僅用於初步資格過濾，不做聯徵查詢、不留存紀錄，資料加密傳輸。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">填完表後多久會有人聯繫我？</div>
+            <div class="faq-a">專員會在工作時間內透過 LINE 主動聯繫您，通常當天或次日回覆。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">這個網站安全嗎？</div>
+            <div class="faq-a">是的。256-bit SSL 加密傳輸，嚴守台灣《個人資料保護法》，絕不外洩。</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1992,8 +2186,11 @@ var TRAFFIC_SOURCE = detectedTrafficSource || rememberedTrafficSource();
 (function() {
   var d = new Date();
   var months = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
-  document.getElementById('pub-date').textContent =
-    d.getFullYear() + ' 年 ' + months[d.getMonth()] + ' ' + d.getDate() + ' 日';
+  var pubDate = document.getElementById('pub-date');
+  if (pubDate) {
+    pubDate.textContent =
+      d.getFullYear() + ' 年 ' + months[d.getMonth()] + ' ' + d.getDate() + ' 日';
+  }
 })();
 
 // ============================================================

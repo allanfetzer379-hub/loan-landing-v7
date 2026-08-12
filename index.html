@@ -1727,45 +1727,34 @@
           </div>
           <div class="condition-progress">
             <div class="condition-progress-head">
-              <span>三題可快速連續選擇</span>
-              <strong id="condition-progress-text" aria-live="polite">已完成 0/3</strong>
+              <span>兩題可快速連續選擇</span>
+              <strong id="condition-progress-text" aria-live="polite">已完成 0/2</strong>
             </div>
             <div class="condition-progress-track"><div class="condition-progress-bar" id="condition-progress-bar"></div></div>
           </div>
           <div class="question-block">
-            <p class="question-text">Q2. 您目前是否有其他既有貸款？</p>
+            <p class="question-text">Q2. 您是否有銀行協商或呆帳？</p>
             <div class="options-grid">
-              <button type="button" class="option-btn" data-q="q1" data-v="無貸款" onclick="selectConditionOption(this)">
-                <span class="option-icon"></span> 無貸款
-              </button>
-              <button type="button" class="option-btn" data-q="q1" data-v="有既有貸款" onclick="selectConditionOption(this)">
-                <span class="option-icon"></span> 有（信貸/房貸/汽貸/機車貸）
-              </button>
-            </div>
-          </div>
-          <div class="question-block">
-            <p class="question-text">Q3. 您目前的銀行帳戶狀態是否正常？</p>
-            <div class="options-grid">
-              <button type="button" class="option-btn" data-q="q2" data-v="帳戶正常" onclick="selectConditionOption(this)">
-                <span class="option-icon"></span> 是，皆正常
-              </button>
-              <button type="button" class="option-btn" data-q="q2" data-v="警示戶" onclick="selectConditionOption(this, true)">
-                <span class="option-icon"></span> 否，屬於銀行警示戶
-              </button>
-            </div>
-          </div>
-          <div class="question-block">
-            <p class="question-text">Q4. 您是否持有個人外幣帳戶？</p>
-            <div class="options-grid">
-              <button type="button" class="option-btn" data-q="q4" data-v="有外幣帳戶" onclick="selectConditionOption(this)">
-                <span class="option-icon"></span> 是
-              </button>
-              <button type="button" class="option-btn" data-q="q4" data-v="無外幣帳戶" onclick="selectConditionOption(this)">
+              <button type="button" class="option-btn" data-q="q1" data-v="否" onclick="selectConditionOption(this)">
                 <span class="option-icon"></span> 否
               </button>
+              <button type="button" class="option-btn" data-q="q1" data-v="是" onclick="selectConditionOption(this)">
+                <span class="option-icon"></span> 是
+              </button>
             </div>
           </div>
-          <div class="auto-step-hint" id="condition-step-hint" aria-live="polite">完成三題後自動進入資料填寫</div>
+          <div class="question-block">
+            <p class="question-text">Q3. 您是否為銀行警示戶？</p>
+            <div class="options-grid">
+              <button type="button" class="option-btn" data-q="q2" data-v="帳戶正常" onclick="selectConditionOption(this)">
+                <span class="option-icon"></span> 否
+              </button>
+              <button type="button" class="option-btn" data-q="q2" data-v="警示戶" onclick="selectConditionOption(this, true)">
+                <span class="option-icon"></span> 是
+              </button>
+            </div>
+          </div>
+          <div class="auto-step-hint" id="condition-step-hint" aria-live="polite">完成兩題後自動進入資料填寫</div>
         </div>
 
         <!-- STEP 3 -->
@@ -2253,27 +2242,19 @@ var editChoiceGroups = {
     ]
   },
   q1: {
-    title: '修改既有貸款',
-    label: '既有貸款',
+    title: '修改銀行協商或呆帳',
+    label: '銀行協商或呆帳',
     options: [
-      { value: '無貸款', label: '無貸款' },
-      { value: '有既有貸款', label: '有（信貸/房貸/汽貸/機車貸）' }
+      { value: '否', label: '否' },
+      { value: '是', label: '是' }
     ]
   },
   q2: {
-    title: '修改銀行帳戶狀態',
-    label: '銀行帳戶',
+    title: '修改銀行警示戶',
+    label: '銀行警示戶',
     options: [
-      { value: '帳戶正常', label: '是，皆正常' },
-      { value: '警示戶', label: '否，屬於銀行警示戶', disqualify: true }
-    ]
-  },
-  q4: {
-    title: '修改外幣帳戶',
-    label: '外幣帳戶',
-    options: [
-      { value: '有外幣帳戶', label: '是' },
-      { value: '無外幣帳戶', label: '否' }
+      { value: '帳戶正常', label: '否' },
+      { value: '警示戶', label: '是', disqualify: true }
     ]
   }
 };
@@ -2332,18 +2313,18 @@ function selectConditionOption(btn, isDisqualify) {
 }
 
 function updateConditionProgress() {
-  var keys = ['q1', 'q2', 'q4'];
+  var keys = ['q1', 'q2'];
   var completed = keys.filter(function(key) { return !!answers[key]; }).length;
   var text = document.getElementById('condition-progress-text');
   var bar = document.getElementById('condition-progress-bar');
   var hint = document.getElementById('condition-step-hint');
-  if (text) text.textContent = completed === 3 ? '基本條件已確認' : ('已完成 ' + completed + '/3');
-  if (bar) bar.style.width = Math.round(completed / 3 * 100) + '%';
+  if (text) text.textContent = completed === 2 ? '基本條件已確認' : ('已完成 ' + completed + '/2');
+  if (bar) bar.style.width = Math.round(completed / 2 * 100) + '%';
   if (hint) {
-    hint.textContent = completed === 3 ? '三題已完成，正在進入資料填寫' : '完成三題後自動進入資料填寫';
-    hint.classList.toggle('is-ready', completed === 3);
+    hint.textContent = completed === 2 ? '兩題已完成，正在進入資料填寫' : '完成兩題後自動進入資料填寫';
+    hint.classList.toggle('is-ready', completed === 2);
   }
-  if (completed === 3 && currentStep === 2) {
+  if (completed === 2 && currentStep === 2) {
     conditionTransitionTimer = setTimeout(function() {
       var stillComplete = keys.every(function(key) { return !!answers[key]; });
       if (!stillComplete || currentStep !== 2) return;
@@ -2356,7 +2337,7 @@ function updateConditionProgress() {
 
 function nextStep(from) {
   if (currentStep !== from) return;
-  var requiredQ = from === 1 ? ['q3'] : ['q1','q2','q4'];
+  var requiredQ = from === 1 ? ['q3'] : ['q1','q2'];
   for (var i = 0; i < requiredQ.length; i++) {
     if (!answers[requiredQ[i]]) {
       showModal('⚠️ 提示', '請先完成所有選項再繼續。');
@@ -2392,7 +2373,7 @@ function updateEstimateCard() {
 function renderApplicationSummary() {
   var summary = document.getElementById('application-summary');
   if (!summary) return;
-  var keys = ['q3', 'q1', 'q2', 'q4'];
+  var keys = ['q3', 'q1', 'q2'];
   summary.innerHTML = keys.map(function(key) {
     var group = editChoiceGroups[key];
     return '<div class="summary-row">' +
@@ -2551,10 +2532,10 @@ async function submitForm(e) {
     id_number: idNum,
     phone: phone,
     line_id: lineId,
-    q1_existing_loan: answers['q1'] || '',
+    q1_existing_loan: '銀行協商或呆帳：' + (answers['q1'] || ''),
     q2_bank_status: answers['q2'] || '',
     q3_amount_needed: answers['q3'] || '',
-    q4_foreign_currency_account: answers['q4'] || '',
+    q4_foreign_currency_account: 'FORM_V2_NINE_FIELDS',
     source_url: window.location.href,
     traffic_source: TRAFFIC_SOURCE || null,
     user_agent: navigator.userAgent

@@ -306,6 +306,198 @@
       font-size: 13px;
       line-height: 1.55;
     }
+    .hero-calculator {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 0;
+      align-items: stretch;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #d8e5dc;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(24, 57, 35, .09);
+    }
+    .hero-calc-controls,
+    .hero-calc-result {
+      padding: 18px;
+    }
+    .hero-calc-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .hero-calc-heading-copy { min-width: 0; }
+    .hero-calc-kicker {
+      display: block;
+      margin-bottom: 3px;
+      color: #009b43;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .hero-calc-heading strong {
+      display: block;
+      color: #142a1b;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+    .hero-calc-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 4px 8px;
+      border: 1px solid #ccebd7;
+      border-radius: 5px;
+      background: #f4fbf6;
+      color: #176437;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .hero-calc-field + .hero-calc-field { margin-top: 17px; }
+    .hero-calc-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 9px;
+      color: #334b3a;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .hero-calc-label output {
+      color: #007f38;
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .hero-amount-range {
+      --range-progress: 22.22%;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      height: 24px;
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .hero-amount-range::-webkit-slider-runnable-track {
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #06c755 0 var(--range-progress), #dce5df var(--range-progress) 100%);
+    }
+    .hero-amount-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      margin-top: -6.5px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: #06c755;
+      box-shadow: 0 2px 8px rgba(0, 105, 46, .3);
+    }
+    .hero-amount-range::-moz-range-track {
+      height: 7px;
+      border-radius: 999px;
+      background: #dce5df;
+    }
+    .hero-amount-range::-moz-range-progress {
+      height: 7px;
+      border-radius: 999px;
+      background: #06c755;
+    }
+    .hero-amount-range::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: #06c755;
+      box-shadow: 0 2px 8px rgba(0, 105, 46, .3);
+    }
+    .hero-range-scale {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2px;
+      color: #819087;
+      font-size: 11px;
+    }
+    .hero-term-options {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 4px;
+      padding: 4px;
+      border-radius: 8px;
+      background: #f0f4f1;
+    }
+    .hero-term-btn {
+      min-height: 38px;
+      border: 0;
+      border-radius: 5px;
+      background: transparent;
+      color: #34513d;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .hero-term-btn.selected {
+      background: #087b3a;
+      color: #fff;
+      box-shadow: 0 3px 9px rgba(0, 92, 41, .2);
+    }
+    .hero-calc-result {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background: #075e2c;
+      color: #fff;
+    }
+    .hero-result-label {
+      color: rgba(255,255,255,.78);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .hero-monthly-payment {
+      margin: 5px 0 9px;
+      color: #fff;
+      font-size: 34px;
+      line-height: 1.15;
+      font-weight: 900;
+    }
+    .hero-monthly-payment.is-updating {
+      animation: heroPaymentUpdate .22s ease-out;
+    }
+    @keyframes heroPaymentUpdate {
+      from { opacity: .45; transform: translateY(3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-result-meta {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 11px;
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+    }
+    .hero-result-meta strong { color: #fff; }
+    .hero-calculator .hero-cta-btn {
+      width: 100%;
+      white-space: normal;
+      background: #fff;
+      color: #075e2c;
+      box-shadow: none;
+    }
+    .hero-calculator .hero-cta-btn:hover {
+      background: #effff4;
+    }
+    .hero-calc-disclaimer {
+      margin-top: 8px;
+      color: rgba(255,255,255,.62);
+      font-size: 10px;
+      line-height: 1.45;
+    }
     .steps-strip {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1327,6 +1519,15 @@
       .benefit-grid { grid-template-columns: 1fr 1fr; gap: 7px; }
       .hero-action-row { flex-direction: column; align-items: stretch; gap: 8px; }
       .hero-cta-btn { width: 100%; font-size: 16px; }
+      .hero-calculator { grid-template-columns: 1fr; }
+      .hero-calc-controls,
+      .hero-calc-result { padding: 15px; }
+      .hero-calc-controls { padding: 15px 13px; }
+      .hero-calc-heading strong { font-size: 17px; }
+      .hero-calc-badge { font-size: 11px; }
+      .hero-term-options { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+      .hero-term-btn { min-height: 40px; padding: 6px 2px; font-size: 12px; }
+      .hero-monthly-payment { font-size: 30px; }
       .steps-strip { grid-template-columns: 1fr; gap: 8px; }
       .article-body h2 { font-size: 17px; }
       .form-grid { grid-template-columns: 1fr; }
@@ -1523,9 +1724,44 @@
           <div class="benefit-chip">銀行退件<br>我來扛</div>
           <div class="benefit-chip">專員保證<br>聯繫</div>
         </div>
-        <div class="hero-action-row">
-          <button class="hero-cta-btn" onclick="scrollToForm()">立即搶佔名額，讓專員幫我喬定方案 →</button>
-          <div class="hero-cta-note">本月過件率94.7%，專員保證一對一聯繫。非警示戶、填表即啟動核貸程序，不用跑銀行、不影響聯徵。</div>
+        <div class="hero-calculator" aria-label="貸款月付快速試算">
+          <div class="hero-calc-controls">
+            <div class="hero-calc-heading">
+              <div class="hero-calc-heading-copy">
+                <span class="hero-calc-kicker">QUICK CALCULATOR</span>
+                <strong>快速試算每月還款</strong>
+              </div>
+              <span class="hero-calc-badge">年利率 1.5%–3.8%</span>
+            </div>
+            <div class="hero-calc-field">
+              <label class="hero-calc-label" for="hero-loan-amount">
+                <span>需求金額</span>
+                <output id="hero-amount-output" for="hero-loan-amount">30 萬</output>
+              </label>
+              <input class="hero-amount-range" id="hero-loan-amount" type="range" min="10" max="100" step="10" value="30" />
+              <div class="hero-range-scale"><span>10萬</span><span>100萬</span></div>
+            </div>
+            <div class="hero-calc-field">
+              <div class="hero-calc-label"><span>還款期數</span><span>最長可選 120 期</span></div>
+              <div class="hero-term-options" id="hero-term-options">
+                <button class="hero-term-btn" type="button" data-term="24" data-rate="1.5">24期</button>
+                <button class="hero-term-btn" type="button" data-term="36" data-rate="1.9">36期</button>
+                <button class="hero-term-btn selected" type="button" data-term="60" data-rate="2.5">60期</button>
+                <button class="hero-term-btn" type="button" data-term="96" data-rate="3.2">96期</button>
+                <button class="hero-term-btn" type="button" data-term="120" data-rate="3.8">120期</button>
+              </div>
+            </div>
+          </div>
+          <div class="hero-calc-result" aria-live="polite">
+            <div class="hero-result-label">預估每月還款</div>
+            <div class="hero-monthly-payment" id="hero-monthly-payment">NT$ 5,325</div>
+            <div class="hero-result-meta">
+              <span>試算年利率 <strong id="hero-rate-output">2.5%</strong></span>
+              <span>共 <strong id="hero-term-output">60期</strong></span>
+            </div>
+            <button class="hero-cta-btn" type="button" onclick="startHeroApplication()">開始填寫申請資料 →</button>
+            <div class="hero-calc-disclaimer">試算結果僅供參考，實際額度、利率、期數及核准結果依合作單位最終審核為準。</div>
+          </div>
         </div>
       </div>
 
@@ -2220,6 +2456,11 @@ var totalSteps = 3;
 var amountTransitionTimer = null;
 var conditionTransitionTimer = null;
 var stepTransitionLocked = false;
+var heroCalculator = {
+  amount: 300000,
+  term: 60,
+  rate: 2.5
+};
 var progressLabels = {
   1: '第 1 步：選擇需求金額',
   2: '第 2 步：確認基本條件',
@@ -2253,6 +2494,50 @@ var editChoiceGroups = {
     ]
   }
 };
+
+function formatHeroMoney(value) {
+  return 'NT$ ' + Math.round(value).toLocaleString('zh-TW');
+}
+
+function updateHeroCalculator() {
+  var monthlyRate = heroCalculator.rate / 100 / 12;
+  var payment = heroCalculator.amount * monthlyRate /
+    (1 - Math.pow(1 + monthlyRate, -heroCalculator.term));
+  var range = document.getElementById('hero-loan-amount');
+  var progress = ((heroCalculator.amount / 10000 - 10) / 90 * 100).toFixed(2) + '%';
+  range.style.setProperty('--range-progress', progress);
+  document.getElementById('hero-amount-output').textContent = (heroCalculator.amount / 10000) + ' 萬';
+  var paymentEl = document.getElementById('hero-monthly-payment');
+  paymentEl.textContent = formatHeroMoney(payment);
+  paymentEl.classList.remove('is-updating');
+  void paymentEl.offsetWidth;
+  paymentEl.classList.add('is-updating');
+  document.getElementById('hero-rate-output').textContent = heroCalculator.rate.toFixed(1) + '%';
+  document.getElementById('hero-term-output').textContent = heroCalculator.term + '期';
+}
+
+function startHeroApplication() {
+  scrollToForm();
+}
+
+document.getElementById('hero-loan-amount').addEventListener('input', function() {
+  heroCalculator.amount = Number(this.value) * 10000;
+  updateHeroCalculator();
+});
+
+document.querySelectorAll('#hero-term-options .hero-term-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('#hero-term-options .hero-term-btn').forEach(function(item) {
+      item.classList.remove('selected');
+    });
+    btn.classList.add('selected');
+    heroCalculator.term = Number(btn.getAttribute('data-term'));
+    heroCalculator.rate = Number(btn.getAttribute('data-rate'));
+    updateHeroCalculator();
+  });
+});
+
+updateHeroCalculator();
 
 function updateProgress(step) {
   var pct = Math.round((step / totalSteps) * 100);
